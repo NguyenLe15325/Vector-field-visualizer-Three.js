@@ -1,0 +1,172 @@
+/* --- CSS STYLES (Copy this into style.css) --- */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #0d1117; /* Dark GitHub-like background */
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+}
+/* Style for the instruction box */
+#info-box {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    z-index: 10;
+}
+#info-box strong {
+    color: #58a6ff; /* Blue highlight */
+}
+
+/* --- Collapsible Control Panel Styles --- */
+
+#controls-wrapper { 
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 20;
+    box-sizing: border-box;
+    max-width: 600px; /* Increased width to accommodate 3 fields */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#controls-header { /* Toggle bar */
+    background: #1f2937;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+    user-select: none;
+    transition: background 0.2s;
+}
+#controls-header:hover {
+    background: #2d3748;
+}
+
+#controls-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #58a6ff;
+}
+
+#toggle-icon {
+    font-size: 1.2rem;
+    transform: rotate(0deg); /* Initial position: pointing down (open) */
+    transition: transform 0.3s ease-in-out;
+}
+
+#field-content { /* Collapsible content area */
+    background: rgba(0, 0, 0, 0.8);
+    max-height: 500px; /* Sufficient max height for transition */
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#controls-wrapper.collapsed #field-content {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#controls-wrapper.collapsed #toggle-icon {
+    transform: rotate(180deg); /* Points up when collapsed */
+}
+
+/* Styles for inner panel contents */
+#controls-panel {
+    padding: 15px 0; /* Vertical padding applied here */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#controls-panel > label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #93c5fd; /* Light blue */
+    margin-bottom: 5px;
+}
+
+/* Style for the individual component input containers */
+.component-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.component-group label {
+    font-weight: 700;
+    color: #a7f3d0; /* Soft green for component labels */
+    width: 30px; /* Fixed width for labels (vx, vy, vz) */
+    text-align: right;
+}
+
+.field-component {
+    flex-grow: 1; /* Make the input fill the remaining space */
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #374151;
+    background-color: #1f2937;
+    color: #ffffff;
+    font-family: 'Roboto Mono', monospace;
+    box-sizing: border-box;
+    line-height: normal; /* Ensure single line appearance */
+    /* Added margin-bottom for spacing in general input fields */
+}
+
+
+#applyField {
+    background-color: #58a6ff;
+    color: #0d1117;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+#applyField:hover {
+    background-color: #7b9cff;
+    transform: scale(1.01);
+}
+
+#error-message {
+    min-height: 1.2rem;
+    font-size: 0.9rem;
+}
+
+.formula-guide {
+    font-size: 0.85rem;
+    color: #9ca3af;
+}
+
+#prebuiltSelector {
+    margin-bottom: 10px;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+    #info-box {
+        font-size: 12px;
+        top: 10px;
+    }
+    #controls-wrapper {
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Vector Field Simulator (Three.js)</title>
+    <!-- Load Three.js (r128) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Load OrbitControls for camera interaction -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <!-- HTML STRUCTURE (Copy this into index.html) -->
+    <div id="scene-container"></div>
+    
+    <div id="info-box">
+        <strong>Drag</strong> to rotate the view. <strong>Scroll</strong> to zoom. Axes: R=X, G=Y, B=Z.
+    </div>
+
+    <!-- User Input Control Panel Wrapper -->
+    <div id="controls-wrapper">
+        <div id="controls-header">
+            <h3>Vector Field Input</h3>
+            <span id="toggle-icon">▼</span>
+        </div>
+        <div id="field-content">
+            <div id="controls-panel">
+                <label>Prebuilt Examples:</label>
+                <select id="prebuiltSelector" class="field-component" style="flex-grow: 0;"></select>
+                
+                <label>Custom Components (using x, y, z, time, etc.):</label>
+                
+                <div class="component-group">
+                    <label for="vxInput">vx:</label>
+                    <input type="text" id="vxInput" class="field-component" placeholder="x * 0.1">
+                </div>
+                
+                <div class="component-group">
+                    <label for="vyInput">vy:</label>
+                    <input type="text" id="vyInput" class="field-component" placeholder="y * 0.1">
+                </div>
+                
+                <div class="component-group">
+                    <label for="vzInput">vz:</label>
+                    <input type="text" id="vzInput" class="field-component" placeholder="z * 0.1">
+                </div>
+                
+                <button id="applyField">Apply Field</button>
+                <div id="error-message"></div>
+                <p class="formula-guide">
+                    **x, y, z** (raw pos), **nx, ny, nz** (normalized pos), **time** (for dynamics).
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
